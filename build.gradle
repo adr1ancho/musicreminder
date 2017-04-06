@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'music-reminder'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    // tag::jetty[]
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    // end::jetty[]
+    // tag::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    // end::actuator[]
+    
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    compile group: 'com.google.guava', name: 'guava', version: '21.0'
+    compile group: 'com.netflix.hystrix', name: 'hystrix-core', version: '1.5.10'
+
+    testCompile("junit:junit")
+    testCompile group: 'org.hamcrest', name: 'hamcrest-core'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-library'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.21'
+
+}
