@@ -8,6 +8,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class ReminderApplication {
 
+	private ReminderApplication() {
+		// do nothing
+	}
+
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(ReminderApplication.class, args);
 	}

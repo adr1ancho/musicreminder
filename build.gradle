@@ -1,9 +1,13 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.3"
     }
 }
 
@@ -11,6 +15,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+apply plugin: "org.sonarqube"
 
 jar {
     baseName = 'music-reminder'
@@ -40,6 +45,9 @@ dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
     compile group: 'com.google.guava', name: 'guava', version: '21.0'
     compile group: 'com.netflix.hystrix', name: 'hystrix-core', version: '1.5.10'
+
+    // for sonarqube
+    compile group: 'org.joda', name: 'joda-convert', version: '1.8.1'
 
     testCompile("junit:junit")
     testCompile group: 'org.hamcrest', name: 'hamcrest-core'

@@ -10,8 +10,8 @@ import java.util.List;
 
 public class Event {
 
-	private final DateTimeFormatter DTF = DateTimeFormat.forPattern("yyyy-MM-dd HHmm");
-	private final DateTimeFormatter TODAY = DateTimeFormat.forPattern("yyyy-MM-dd");
+	private static final DateTimeFormatter DTF = DateTimeFormat.forPattern("yyyy-MM-dd HHmm");
+	private static final DateTimeFormatter TODAY = DateTimeFormat.forPattern("yyyy-MM-dd");
 
 	private final EventType type;
 	private final Date date;
