@@ -31,4 +31,5 @@ public class ReminderTest {
 				.withSound(sound);
 		assertThat(reminder.withinTimeRange(event), is(true));
 	}
+
 }
